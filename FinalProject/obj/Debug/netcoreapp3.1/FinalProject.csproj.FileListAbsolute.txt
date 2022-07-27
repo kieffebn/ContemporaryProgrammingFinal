@@ -59,4 +59,15 @@ C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\Fin
 C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\FinalProject.csproj.CopyComplete
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\Namotion.Reflection.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NJsonSchema.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NJsonSchema.Yaml.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.Annotations.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.AspNetCore.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.Core.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.Core.Yaml.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.Generation.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\NSwag.Generation.AspNetCore.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\bin\Debug\netcoreapp3.1\YamlDotNet.dll
+C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\FinalProject.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\benja\OneDrive\UC Summer 2022\Contemporary Programming\FinalProject\FinalProject\obj\Debug\netcoreapp3.1\FinalProject.csproj.AssemblyReference.cache

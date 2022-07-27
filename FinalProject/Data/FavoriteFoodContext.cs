@@ -19,6 +19,6 @@ namespace FinalProject.Data
             );
         }
 
-        public DbSet<FavoriteFood> FavoriteMeals { get; set; }
+        public DbSet<FavoriteFood> FavoriteFoods { get; set; }
     }
 }

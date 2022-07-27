@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FinalProject.Data;
+using FinalProject.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace FinalProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerDocument();
             services.AddDbContext<TeamNameContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("TeamNameContext")));
             services.AddDbContext<FavoriteFoodContext>(options =>
@@ -36,6 +38,10 @@ namespace FinalProject
                 options.UseSqlServer(Configuration.GetConnectionString("FavoriteVenueContext")));
             services.AddDbContext<FavoriteMusicContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FavoriteMusicContext")));
+            services.AddScoped<ITeamNameContextDAO, TeamNameContextDAO>();
+            services.AddScoped<IFavoriteVenueContextDAO, FavoriteVenueContextDAO>();
+            services.AddScoped<IFavoriteMusicContextDAO, FavoriteMusicContextDAO>();
+            services.AddScoped<IFavoriteFoodContextDAO, FavoriteFoodContextDAO>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,10 +52,9 @@ namespace FinalProject
                 app.UseDeveloperExceptionPage();
             }
 
-            db1.Database.Migrate();
-            db2.Database.Migrate();
-            db3.Database.Migrate();
-            db4.Database.Migrate();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+
 
 
             app.UseHttpsRedirection();

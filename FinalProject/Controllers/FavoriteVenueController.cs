@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FinalProject.Models;
 using FinalProject.Data;
+using FinalProject.Interfaces;
 
 namespace FinalProject.Controllers
 {
@@ -15,9 +16,9 @@ namespace FinalProject.Controllers
     {
 
         private readonly ILogger<FavoriteVenueController> _logger;
-        private readonly FavoriteVenueContext _context;
+        private readonly IFavoriteVenueContextDAO _context;
 
-        public FavoriteVenueController(ILogger<FavoriteVenueController> logger, FavoriteVenueContext context)
+        public FavoriteVenueController(ILogger<FavoriteVenueController> logger, IFavoriteVenueContextDAO context)
         {
             _logger = logger;
             _context = context;
@@ -26,7 +27,57 @@ namespace FinalProject.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.FavoriteVenues.ToList());
+            return Ok(_context.GetFavoriteVenues());
+        }
+
+        [HttpGet("id")]
+        public IActionResult GetById(int id)
+        {
+            var venue = _context.GetFavoriteVenueById(id);
+            if (venue == null)
+                return NotFound(id);
+
+            return Ok(venue);
+        }
+
+        [HttpDelete("id")]
+        public IActionResult Delete(int id)
+        {
+            var result = _context.RemoveFavoriteVenueById(id);
+            if (result == null)
+                return NotFound(id);
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Put(FavoriteVenue name)
+        {
+            var result = _context.UpdateFavoriteVenue(name);
+            if (result == null)
+                return NotFound(name.Id);
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Post(FavoriteVenue name)
+        {
+            var result = _context.Add(name);
+
+            if (result == null)
+                return StatusCode(500, "Venue Already Exists");
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
         }
 
     }

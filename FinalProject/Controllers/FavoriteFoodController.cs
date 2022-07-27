@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FinalProject.Models;
 using FinalProject.Data;
+using FinalProject.Interfaces;
 
 namespace FinalProject.Controllers
 {
@@ -15,9 +16,9 @@ namespace FinalProject.Controllers
     {
 
         private readonly ILogger<FavoriteFoodController> _logger;
-        private readonly FavoriteFoodContext _context;
+        private readonly IFavoriteFoodContextDAO _context;
 
-        public FavoriteFoodController(ILogger<FavoriteFoodController> logger, FavoriteFoodContext context)
+        public FavoriteFoodController(ILogger<FavoriteFoodController> logger, IFavoriteFoodContextDAO context)
         {
             _logger = logger;
             _context = context;
@@ -26,7 +27,57 @@ namespace FinalProject.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.FavoriteMeals.ToList());
+            return Ok(_context.GetFavoriteFoods());
+        }
+
+        [HttpGet("id")]
+        public IActionResult GetById(int id)
+        {
+            var food = _context.GetFavoriteFoodById(id);
+            if (food == null)
+                return NotFound(id);
+
+            return Ok(food);
+        }
+
+        [HttpDelete("id")]
+        public IActionResult Delete(int id)
+        {
+            var result = _context.RemoveFavoriteFoodById(id);
+            if (result == null)
+                return NotFound(id);
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult Put(FavoriteFood name)
+        {
+            var result = _context.UpdateFavoriteFood(name);
+            if (result == null)
+                return NotFound(name.Id);
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Post(FavoriteFood name)
+        {
+            var result = _context.Add(name);
+
+            if (result == null)
+                return StatusCode(500, "Food Already Exists");
+
+            if (result == 0)
+                return StatusCode(500, "An error occurred while processing your request");
+
+            return Ok();
         }
 
     }
